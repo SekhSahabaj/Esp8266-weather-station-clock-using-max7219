@@ -1,30 +1,9 @@
 /*
-  ESP-01 pinout from top:
-  
-  GND    GP2 GP0 RX/GP3
-  TX/GP1 CH  RST VCC
-
-  MAX7219
-  ESP-1 from rear
-  Re Br Or Ye
-  Gr -- -- --
-
-  USB to Serial programming
-  ESP-1 from rear, FF to GND, RR to GND before upload
-  Gr FF -- Bl
-  Wh -- RR Vi
-
-  GPIO 2 - DataIn
-  GPIO 1 - LOAD/CS
-  GPIO 0 - CLK
-
-  ------------------------
-  NodeMCU 1.0 pinout:
-
-  D8 - DataIn
-  D7 - LOAD/CS
-  D6 - CLK
-  
+ * Assuming esp boards already installed. 
+ * Must use this library :- 
+ * ESP8266WiFi at version 1.0
+ * ArduinoJson at version 5.13.2
+  Download these library from library manager.
 */
 
 
@@ -67,11 +46,11 @@ String weatherString;
 // =======================================================================
 // CHANGE YOUR CONFIG HERE:
 // =======================================================================
-const char* ssid     = "Secure@FootwearZone";     // SSID of local network
-const char* password = "t1t1t1t1";   // Password on network
-String weatherKey = "c9e6ef8d012577d00d721b3b83096d4d";
+const char* ssid     = "yourssidname";     // SSID of local network
+const char* password = "yourpassward";   // Password on network
+String weatherKey = "weatherkeyfromopenweather"; // city id from openweather 
 String weatherLang = "&lang=en";
-String cityID = "1272175"; //Warsaw
+String cityID = "idfromopenweather"; // Cityid from open weather
 // read OpenWeather api description for more info
 // =======================================================================
 
@@ -376,7 +355,7 @@ void getWeatherData()
 
 // =======================================================================
 
-float utcOffset = 5.50;
+float utcOffset = 5.50;  //Change utcoffset according to your utc any +- varry a little bit adjust it as per the needs.
 long localEpoc = 0;
 long localMillisAtUpdate = 0;
 
